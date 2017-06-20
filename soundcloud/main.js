@@ -9,30 +9,11 @@ var inputTrack = document.getElementById("musicSearch");
 // console.log(searchItem);
 // 2. Create your `onSubmit` event for getting the user's search term
 
-submitButt.addEventListener('click', function onSubmit(inputTrack){
+submitButt.addEventListener('click', function onSubmit(){
   console.log("Button clicked");
+  console.log(inputTrack.value)
   let searchItem = inputTrack.value;
-  return searchAPI(searchItem);
-
-  // var api = 'https://api.soundcloud.com/tracks/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + searchItem;
-  // console.log(api);
-  //  fetch(api)
-  //  .then
-  //  (
-  //     function(response) {
-  //       if (response.status !== 200) {
-  //         console.log("bad response: " + response.status);
-  //         return
-  //       }
-  //       response.json().then(function(data){
-  //          var calledData = data;
-  //         console.log(data);
-  //
-  //        }
-  //      );
-  //     }
-  //   );
-
+  searchAPI(searchItem);
 });
 
 inputTrack.addEventListener('keypress', function onEnter(e){
@@ -54,14 +35,13 @@ console.log("you're connected");
 
 function searchAPI(userString){
   //Takes input and turns searchable string into a fetch call to api.
-  userString.replace(/\s+/g, '');
+  // userString.replace(/\s+/g, '');
 
   console.log(userString);
 
    let apiCall = 'https://api.soundcloud.com/tracks/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=' + userString;
 
-   console.log("https://api.soundcloud.com/tracks/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=twentyonepilots");
-   fetch("https://api.soundcloud.com/tracks/?client_id=095fe1dcd09eb3d0e1d3d89c76f5618f&q=twentyonepilots")
+   fetch(apiCall)
    .then
    (
       function(response) {
@@ -70,7 +50,9 @@ function searchAPI(userString){
           return;
         }
         response.json().then(function(data){
-           console.log('search Request for: ' + apiCall);
+          console.log(data);
+          appendSearchResults(data);
+
         });
       }
     );
@@ -78,7 +60,20 @@ function searchAPI(userString){
 
 
 
-// 4. Create a way to append the fetch results to your page
+//4. Create a way to append the fetch results to your page
 
+function appendSearchResults(data){
+for(let i = 0;i<data.length; i++)
+{
+  module=
+  `
+  <div class="track">
+    <img class="track-artwork" src="${data.artwork_url}">
+    <h3 clas="song-name">${data.title}</h3>
+  </div>
+  `
+  document.getElementsByClassName("results").innerHTML += module;
+  }
+}
 
 // 5. Create a way to listen for a click that will play the song in the audio play
