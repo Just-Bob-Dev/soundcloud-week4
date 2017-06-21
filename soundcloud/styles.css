@@ -1,11 +1,69 @@
+/*
+font-family: 'Voltaire', sans-serif;
+*/
+
+
 body {
-  background-color: #60d9f1;
+  background-color: lightgrey;
+  margin: 0;
+  padding: 0;
 }
 
-.search input {
+header{
+  background-image: url('images/city.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  margin-bottom: 2.5%;
+  padding: 0;
+  height: 30vh;
+  box-shadow: 5px 5px 5px white;
+}
+
+h1 {
+  font-family: 'Voltaire', sans-serif;
+  font-size: 6em;
   text-align: center;
+  margin:0;
+  padding-top: 4.5%;
+  color: white;
+  text-shadow: 5px 5px 3px grey;
 }
 
+.player {
+  display: flex;
+  justify-content: center;
+  margin: 2.5%;
+}
+
+.music-player {
+  width: 40%;
+}
+
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  flex-basis: 40%;
+  margin-right: 5%;
+  height: 5vh;
+  font-size: 2em;
+  margin-bottom: 2.5%;
+}
+
+button {
+  flex-basis: 20%;
+  margin-bottom: 2.5%;
+  font-size: 2em;
+}
 
 .track-container {
   display: grid;
@@ -15,4 +73,20 @@ body {
 .track-container img {
   width: 15vw;
   height: 15vw;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  border-radius: 10px;
+}
+
+.track-button {
+  border: 0px solid grey;
+  padding: 0;
+  margin: 0;
+  border-radius: 10px;
+}
+
+li {
+  list-style-type: none;
+  text-align: center;
 }

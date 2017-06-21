@@ -17,16 +17,13 @@ submitButton.addEventListener('click', function onSubmit(){
   searchAPI(searchItem);
 });
 
-inputTrack.addEventListener('keypress', function(e){
+inputTrack.addEventListener("keypress", function(e){
   let x = e.which || e.keycode;
-  if(e.keycode === 13 && inputTrack.value != "" && inputTrack.value){
-
-    console.log(inputTrack.value);
+  if(x === 13 && inputTrack.value != ""){
+    console.log("you pressed enter");
     searchAPI(inputTrack.value);
   }
-  else {
-    return "Hey you need to put something in the input area.";
-  }
+  return e;
 });
 
 // 3. Create your `fetch` request that is called after a submission
@@ -36,8 +33,8 @@ console.log("you're connected");
 function searchAPI(userString){
   //Takes input and turns searchable string into a fetch call to api.
   console.log(userString);
-  let clientId = '095fe1dcd09eb3d0e1d3d89c76f5618f&q'
-   let apiCall = 'https://api.soundcloud.com/tracks/?client_id='+ clientId + '=' + userString;
+  let clientId = '095fe1dcd09eb3d0e1d3d89c76f5618f'
+   let apiCall = 'https://api.soundcloud.com/tracks/?client_id='+ clientId + '&q=' + userString;
 
    fetch(apiCall)
    .then
@@ -59,9 +56,13 @@ function searchAPI(userString){
             ${myTracks.map(myTrack =>
             `
             <div class="track">
-              <img src="${myTrack.artwork_url}">
-              <p class="song-name">${myTrack.title}</p>
-              <h3 class="user-name">${myTrack.user.username}</h3>
+            <button class="track-button">
+              <img src="${myTrack.artwork_url}" id="${myTrack.stream_url}/?client_id=${clientId}" alt="Artwork for track is supposed to be here.">
+            </button>
+            <ul>
+              <li class="song-name">${myTrack.title}</li>
+              <li class="user-name">${myTrack.user.username}</li>
+            </ul>
             </div>
             `).join('')}
             </div>`;
@@ -69,25 +70,18 @@ function searchAPI(userString){
           markup = renderMyTrack();
           console.log(markup);
           document.getElementById('results').innerHTML = markup;
+
+// 5. Create a way to listen for a click that will play the song in the audio play
+
+      document.getElementById('results').addEventListener('click', function(event){
+          let trackTrigger = document.getElementsByClassName("track-button");
+          event.target = trackTrigger;
+          let audio = document.getElementById("audio-wrapper");
+          audio.innerHTML = `<audio class="music-player" controls="controls" src=${event.target.id}></audio>`;
+          // console.log("You clicked " + event.target.id);
+        });
         });
       }
 
     );
 }
-
-
-
-
-//
-// function appendSearchResults(data){
-//
-//     module=`
-//       <div class="track">
-//       <img class="track-artwork" src="${data.artwork_url}">
-//       <h3 clas="song-name">${data.title}</h3>
-//       </div>
-//       `
-//       document.getElementsByClassName("results").innerHTML = module;
-// }
-
-// 5. Create a way to listen for a click that will play the song in the audio play
