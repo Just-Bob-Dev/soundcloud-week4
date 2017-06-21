@@ -77,7 +77,7 @@ function searchAPI(userString){
           let trackTrigger = document.getElementsByClassName("track-button");
           event.target = trackTrigger;
           let audio = document.getElementById("audio-wrapper");
-          audio.innerHTML = `<audio class="music-player" controls="controls" src=${event.target.id}></audio>`;
+          audio.innerHTML = `<audio class="music-player" controls="controls" src=${event.target.id} autoplay></audio>`;
           // console.log("You clicked " + event.target.id);
         });
         });
