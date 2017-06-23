@@ -59,11 +59,9 @@ function searchAPI(userString){
             <button class="track-button">
               <img src="${myTrack.artwork_url}" id="${myTrack.stream_url}/?client_id=${clientId}" alt="Artwork for track is supposed to be here.">
             </button>
-            <ul>
               <li class="song-name">${myTrack.title}</li>
-              <li class="user-name">${myTrack.user.username}</li>
-            </ul>
-            </div>
+              <li class="user-name">${myTrack.user.username}<li>
+            <div>
             `).join('')}
             </div>`;
           }
