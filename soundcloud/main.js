@@ -34,7 +34,7 @@ function searchAPI(userString){
   //Takes input and turns searchable string into a fetch call to api.
   console.log(userString);
   let clientId = '095fe1dcd09eb3d0e1d3d89c76f5618f'
-   let apiCall = 'https://api.soundcloud.com/tracks/?client_id='+ clientId + '&q=' + userString;
+   let apiCall = 'https://api.soundcloud.com/tracks/?client_id='+ clientId + '&q=' + userString+ "&limit=16";
 
    fetch(apiCall)
    .then
