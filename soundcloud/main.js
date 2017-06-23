@@ -52,18 +52,18 @@ function searchAPI(userString){
 
           function renderMyTrack()
           {
-            return`<div class="track-container">
+            return`<ul class="track-container">
             ${myTracks.map(myTrack =>
             `
-            <div class="track">
-            <button class="track-button">
-              <img src="${myTrack.artwork_url}" id="${myTrack.stream_url}/?client_id=${clientId}" alt="Artwork for track is supposed to be here.">
-            </button>
-              <li class="song-name">${myTrack.title}</li>
-              <li class="user-name">${myTrack.user.username}<li>
-            <div>
+              <li class="track">
+                <button class="track-button">
+                  <img src="${myTrack.artwork_url}" id="${myTrack.stream_url}/?client_id=${clientId}" alt="Artwork for track is supposed to be here.">
+                </button>
+                <p class="song-name">${myTrack.title}</p>
+                <p class="user-name">${myTrack.user.username}<p>
+              </li>
             `).join('')}
-            </div>`;
+            </ul>`;
           }
           markup = renderMyTrack();
           console.log(markup);
