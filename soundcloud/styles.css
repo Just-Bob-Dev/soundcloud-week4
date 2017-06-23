@@ -77,14 +77,14 @@ button {
   padding: 0;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px;
+  border-radius: 50%;
 }
 
 .track-button {
   border: 0px solid grey;
   padding: 0;
   margin: 0;
-  border-radius: 10px;
+  border-radius: 50%;
 }
 
 li {
